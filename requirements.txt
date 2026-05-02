@@ -1,0 +1,9 @@
+# Local Wikipedia RAG -- minimal dependency set.
+#
+# Wikipedia ingestion uses the standard-library ``urllib`` so no third-party
+# Wikipedia client is required.  Embeddings and generation are routed through
+# the Ollama HTTP API directly, again via ``urllib``.  That leaves only NumPy
+# (vector math) and Streamlit (optional web UI) as dependencies.
+
+numpy>=1.24
+streamlit>=1.30
