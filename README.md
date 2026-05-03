@@ -277,8 +277,7 @@ Chunk size, overlap, and Top-K are at the top of `config.py`.
 
 ## 12. Demo video
 
-A 5-minute walkthrough is available at: **<https://youtu.be/REPLACE_ME>**
-*(replace with your unlisted YouTube / Loom link before submitting).*
+A 5-minute walkthrough is available at: **<https://youtu.be/E5NXO3KGV18>**
 
 The video covers system overview, ingestion + indexing, live chat,
 technical decisions, tradeoffs, and possible improvements.
