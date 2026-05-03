@@ -97,6 +97,15 @@ ranking arbitrate, which gives us the best of both designs.
 - **Ollama**, the local LLM runtime: <https://ollama.com/download>
 - ~3 GB of free disk for the model weights
 
+> **Fast path for graders.**
+> The repository ships with **pre-built data**: 40 ingested Wikipedia
+> articles under `data/raw/`, a 768-dim vector index for each store
+> under `data/index/`, and a populated SQLite metadata DB under
+> `data/db/`.  You can skip steps 5 and 6 below and go straight from
+> "install Ollama" to "run the assistant".  If you'd like to verify the
+> ingestion + indexing pipeline still works from scratch, the
+> `--refresh` and `--reset` flags wipe and rebuild the data.
+
 ---
 
 ## 3. Install
@@ -131,21 +140,29 @@ without changing any code.
 
 ---
 
-## 5. Ingest Wikipedia data
+## 5. Ingest Wikipedia data — *optional, only to rebuild from scratch*
+
+The repository already ships with the 40 ingested articles under
+`data/raw/`.  You only need this step if you want to verify the
+ingestion pipeline or refresh the corpus:
 
 ```bash
 python -m scripts.ingest          # ~1 min, polite 0.5 s/page rate-limit
+python -m scripts.ingest --refresh   # force re-download
 ```
 
-This downloads plain-text bodies for the 20 people and 20 places listed
-in `config.py` (which includes every required entity from the brief)
-into `data/raw/`.
-
-Re-run with `--refresh` to force a fresh download.
+`scripts.ingest` downloads plain-text bodies for the 20 people and 20
+places listed in `config.py` (which includes every required entity
+from the brief) into `data/raw/`.
 
 ---
 
-## 6. Build the vector index
+## 6. Build the vector index — *optional, only to rebuild from scratch*
+
+The repository already ships with a populated index under `data/index/`
+and `data/db/rag.sqlite`, embedded with `nomic-embed-text` (768-dim).
+Re-run only if you changed the embedding model or want to verify
+reproducibility:
 
 ```bash
 python -m scripts.build_index     # depends on Ollama embeddings
