@@ -1,13 +1,25 @@
 # Local Wikipedia RAG Assistant
 
+> **Demo video (5 min, unlisted YouTube):** <https://youtu.be/E5NXO3KGV18>
+>
+> Built for **BLG483E – Project 3** by *volkanersever*.
+
 A from-scratch retrieval-augmented-generation (RAG) system that answers
 questions about famous people and famous places using only **local**
 resources: a local LLM via Ollama, a local embedding model, a hand-rolled
 NumPy vector store, and a SQLite metadata database.
 
-> Built for **BLG483E – Project 3**.  No external LLM API, no managed
-> vector store, no LangChain.  The only third-party Python deps are
-> NumPy and Streamlit.
+No external LLM API, no managed vector store, no LangChain.  The only
+third-party Python deps are NumPy and Streamlit.
+
+**Quick links:**
+[Demo video](https://youtu.be/E5NXO3KGV18) ·
+[Architecture](#1-architecture-at-a-glance) ·
+[Install](#3-install) ·
+[Run](#7-start-the-assistant) ·
+[Example queries](#8-example-queries) ·
+[PRD](Product_prd.md) ·
+[Recommendations](recommendation.md)
 
 ---
 
